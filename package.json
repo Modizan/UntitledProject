@@ -1,12 +1,12 @@
 {
   "name": "UntitledProject",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Data scrapping agent",
-  "main": "src/electron/main.js",
+  "main": "src/js/app.js",
   "scripts": {
-    "start": "electron ."
+    "start": "node"
   },
   "dependencies": {
-    "electron": "^12.0.1"
+
   }
 }
