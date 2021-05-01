@@ -9,6 +9,10 @@
   "dependencies": {
     "axios": "^0.21.1",
     "cheerio": "^1.0.0-rc.5",
-    "request": "^2.88.2"
+    "request": "^2.88.2",
+    "puppeteer": "^8.0.0"
+  },
+  "devDependencies": {
+    "json": "^11.0.0"
   }
 }

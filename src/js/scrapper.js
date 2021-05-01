@@ -1,25 +1,65 @@
-const axios = require('axios');
-const cheerio = require('cheerio');
-async function getHtml(uri) {
-    const { data: html } = await axios.get(uri);
-    // console.log(html);
-    return html;
+const puppeteer = require('puppeteer');
+
+const SUBREDDIT_URL = (reddit) => `https://old.reddit.com/r/${reddit}/`;
+
+const self = {
+    browser: null,
+    page: null,
+
+    initialize: async (reddit) => {
+        self.browser = await puppeteer.launch({
+            headless: true
+        });
+        self.page = await self.browser.newPage();
+
+        await  self.page.goto(SUBREDDIT_URL(reddit), {waitUntil: 'networkidle0'});
+
+    },
+
+    getResults: async (nr) => {
 
 
+        let elements = await self.page.$$('#siteTable > div[class *= "thing"]');
+        let results = [];
+
+        for(let element of elements) {
+
+            let title = await  element.$eval(('p[class = "title"] > a'), node => node.innerText.trim());
+            let author = await element.$eval(('p[class = "tagline "] > a[class *= "author"]'), node => node.innerText.trim());
+
+            let authorUrlTemp = await element.$eval(('p[class = "tagline "] > a[class *= "author"]'), node => node.getAttribute('href'));
+            let authorUrl = authorUrlTemp.replace("old.reddit.com", "www.reddit.com");
+
+            let score = await  element.$eval(('div[class = "score unvoted"]'), node => node.innerText.trim());
+            let time = await  element.$eval(('p[class = "tagline "] > time'), node => node.getAttribute('title'));
+
+            let urlTemp = await  element.$eval(('li[class = "first"] > a'), node => node.getAttribute('href'));
+            let url = urlTemp.replace("old.reddit.com", "www.reddit.com");
+
+            let mediaUrl;
+
+            try {
+                mediaUrl = "https://" + (await element.$eval(('a[class = "thumbnail invisible-when-pinned may-blank outbound"] > img, a[class = "thumbnail invisible-when-pinned may-blank "] > img, a[class = "thumbnail invisible-when-pinned self may-blank "] > img'), node => node.getAttribute('src')));
+            }
+            catch (UnhandledPromiseRejectionWarning) {
+                mediaUrl = "No media";
+            }
+
+
+            results.push({
+                title,
+                author,
+                authorUrl,
+                score,
+                time,
+                url,
+                mediaUrl
+            })
+
+        }
+
+        return results;
+    }
 }
-async function getTwitterFollowers(html) {
-    //Load up cheerio
 
-
-    const $ = cheerio.load(html);
-    const span = $.find('css-901oao css-16my406 r-18jsvk2 r-poiln3 r-b88u0q r-bcqeeo r-qvutc0');
-    return span.data('count');
-
-
-}
-
-
-const html = getHtml('https://twitter.com/andriiantipov')
-const twtcount = getTwitterFollowers(html)
-
-console.log(twtcount)
+module.exports = self;
