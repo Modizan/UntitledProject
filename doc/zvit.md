@@ -95,7 +95,7 @@
 - queue-promise - бібліотека дозволяє створювати черги засновані на запитах. Дозволяє виконувати певні дії після виконання чи відхилення завдання.
 
 **Діаграма класів**
-![photo2](https://github.com/sofiaguchenko/agent/blob/main/doc/ph/photo_2021-05-20_19-48-46.jpg)
+![photo2](https://github.com/Modizan/UntitledProject/blob/master/doc/ph/Diagramm.png)
 
 ### Структура проєкту
 Агент складається з двох модулів, та файлу config.json з якого зчитуються джерела для вибірки даних.
@@ -110,7 +110,7 @@
 ## Тестування
 Для виконання тестувань було використано модуль Jest, проте корректно створити працездатні тести не вдалось. Було прийнято рішення тестувати ПЗ власноруч.
 Пряме тестування працездатності програми дало потрібні результати. Агент працює справно, повертає файл з зібраною інформацією [collectedData](https://github.com/sofiaguchenko/agent/blob/main/src/config/collectedData.json).
-![photo1](https://github.com/sofiaguchenko/agent/blob/main/doc/ph/photo_2021-05-20_19-46-23.jpg)
+![photo1](https://github.com/Modizan/UntitledProject/blob/master/doc/ph/Screenshot.png)
 Програма успішно зчитує та зберігає дані. Виконує всі поставлені для неї задачі.
 
 <a name="висновки"></a>
