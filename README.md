@@ -2,7 +2,7 @@
 ## Агент вибірки даних з медіа ресурсу(reddit)
 Проєкт з дисципліни "Інженерія програмного забезпечення-2"
 
-[Пояснювальна записка](UntitledProject/doc/zvit.md)
+[Пояснювальна записка](https://github.com/Modizan/UntitledProject/blob/developFixed/doc/zvit.md)
 ### Виконав студент групи ІО-91
 
 Щурик Євгеній
