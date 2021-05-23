@@ -27,7 +27,7 @@ async function processing () {
 
     // Progress bar declaration with given format
     const progressBar = new cliProgress.SingleBar({
-        format: '{bar} {percentage}% | {value}/{total} | elapsed: {duration_formatted} | estimated: {eta_formatted} Current Source: ' + chalk.blue('{source}'),
+        format: chalk.blue('{bar} {percentage}%') +'| {value}/{total} |' + chalk.green('elapsed: {duration_formatted}') + '| estimated: {eta_formatted} Current Source: ' + chalk.blue('{source}'),
         hideCursor: true
     })
 
