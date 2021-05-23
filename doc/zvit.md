@@ -113,8 +113,10 @@
 - На те, чи не дорівнює начиння файлу config пустому списку.
 - На те, чи не видає функціоняльна частина синтаксичну помилку, при ітерації через json файл config.
 ![photo2](https://github.com/Modizan/UntitledProject/blob/master/doc/ph/test.png)
+
 Пряме тестування працездатності програми дало потрібні результати. Агент працює справно, повертає файл з зібраною інформацією [collectedData](https://github.com/Modizan/UntitledProject/blob/master/src/config/collectedData.json).
 ![photo1](https://github.com/Modizan/UntitledProject/blob/master/doc/ph/Screenshot.png)
+
 Програма успішно зчитує та зберігає дані. Виконує всі поставлені для неї задачі.
 
 <a name="висновки"></a>
